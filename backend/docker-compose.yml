@@ -7,7 +7,7 @@ services:
             context: .
             dockerfile: Dockerfile
         ports:
-            - "4208:8080"
+            - "4210:8080"
         networks:
             - cyoa-network
     mongo-db:
