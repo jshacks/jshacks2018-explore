@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import { Http } from "../data/Http";
+import { withRouter } from "react-router";
 
 class LoginContainer extends Component {
     constructor(props) {
@@ -16,10 +17,11 @@ class LoginContainer extends Component {
         this.setState({ [name]: event.target.value });
     }
 
-    async _handleSubmit() {
+    async _handleSubmit(history) {
         const http = new Http('auth');
         const data = await http.post('authenticate', this.state);
         this._saveLoginInfo(data);
+        history.push('/home');
     }
 
     _saveLoginInfo(loginInfo) {
@@ -27,7 +29,20 @@ class LoginContainer extends Component {
         localStorage.setItem('user', JSON.stringify(loginInfo.user));
     }
 
+    componentDidMount() {
+        const token = localStorage.getItem('token');
+        if (token) {
+            window.location = 'home';
+        }
+    }
+
     render() {
+        const LoginBtn = withRouter(({ history }) => (
+            <Button variant="contained" color="primary" onClick={this._handleSubmit.bind(this, history)}>
+                Login
+            </Button>
+        ));
+
         return (
             <div className="LoginContainer">
                 <Card className="ex-login-container">
@@ -43,9 +58,7 @@ class LoginContainer extends Component {
                         </CardContent>
                         <CardActions>
                             <div className="ex-auth-buttons">
-                                <Button variant="contained" color="primary" onClick={this._handleSubmit.bind(this)}>
-                                    Login
-                                </Button>
+                                <LoginBtn/>
                                 <Button variant="contained" color="primary">
                                     Register
                                 </Button>
