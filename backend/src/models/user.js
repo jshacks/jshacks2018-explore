@@ -12,6 +12,8 @@ const schema = new mongoose.Schema({
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false },
     isActive: { type: Boolean, default: true },
+
+
 });
 
 schema.pre('save', function (next) {
