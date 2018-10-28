@@ -14,10 +14,16 @@ export class Http {
     }
 
     _getHeaders() {
-        return {
-            'Content-Type': 'applciation/json',
-            'authorization': 'Bearer ' + localStorage.getItem('token'),
+        const headers = {
+            'Content-Type': 'application/json',
         };
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            headers['authorization'] = 'Bearer ' + token;
+        }
+
+        return headers
     }
 
     async get(url, query, headers = {}) {
