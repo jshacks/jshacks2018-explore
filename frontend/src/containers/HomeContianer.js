@@ -4,6 +4,7 @@ import { UsersService } from "../data/Users";
 import { AttendeesService } from "../data/Attendees";
 import Event from "../components/Event";
 import Search from "../components/Search";
+import { Http } from "../data/Http";
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -13,6 +14,13 @@ class HomeContainer extends Component {
 
     _renderEvent(event) {
         return <Event key={event.id} event={event}/>
+    }
+
+    async _onSearch(state) {
+        console.log('MINE: ', state);
+        const http = new Http();
+        const data = await http.get('user/get_recommended_events', state);
+        console.log(data);
     }
 
     async componentDidMount() {
@@ -36,7 +44,7 @@ class HomeContainer extends Component {
 
         return (
             <div className="HomeContainer">
-                <Search/>
+                <Search onSearch={this._onSearch.bind(this)}/>
                 {events}
             </div>
         );

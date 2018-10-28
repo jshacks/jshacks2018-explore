@@ -36,7 +36,7 @@ class Search extends Component {
                                 shrink: true,
                             }}
                         />
-                        <IconSearch className="ex-search-icon" />
+                        <IconSearch className="ex-search-icon" onClick={() => this.props.onSearch(this.state)} />
                     </CardContent>
                 </Card>
             </div>
