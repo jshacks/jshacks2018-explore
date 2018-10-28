@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ENDPOINT = 'http://212.237.26.52:3000/';
+const ENDPOINT = 'http://172.18.0.2:4210/';
 
 export class Http {
 

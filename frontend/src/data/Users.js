@@ -208,7 +208,7 @@ export class UsersService {
         this.users = [];
     }
 
-    async getUsers() {
+    async loadUsers() {
         this.users = await csvtojson({
             noheader:true,
             output: "csv"

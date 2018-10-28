@@ -208,7 +208,7 @@ export class AttendeesService {
         this.attendees = [];
     }
 
-    async getAttendees() {
+    async loadAttendees() {
         this.attendees = await csvtojson({
             noheader:true,
             output: "csv"
