@@ -9,7 +9,10 @@ class Header extends Component {
     render() {
         return (
             <div className="Header">
-                <h2>Exploore{this._getSuffix()}</h2>
+                <h2 style={{ width: '100%' }}>
+                    <span style={{ float: 'left' }}>Exploore{this._getSuffix()}</span>
+                    <span style={{ float: 'right' }}>Get recommended events</span>
+                </h2>
             </div>
         );
     }
