@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <div className="Footer">
-                Footer
+                <b>JSHacks 2018</b>
             </div>
         );
     }
