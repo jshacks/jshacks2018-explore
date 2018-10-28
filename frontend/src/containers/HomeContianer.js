@@ -3,6 +3,7 @@ import { EventsService } from "../data/Events";
 import { UsersService } from "../data/Users";
 import { AttendeesService } from "../data/Attendees";
 import Event from "../components/Event";
+import Search from "../components/Search";
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class HomeContainer extends Component {
 
         return (
             <div className="HomeContainer">
+                <Search/>
                 {events}
             </div>
         );
